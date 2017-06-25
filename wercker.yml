@@ -1,6 +1,6 @@
 # The container definition we want to use for developing our app
-box: golang
-# box: mefellows/pact-go-docker-build
+# box: golang
+box: mefellows/pact-go-docker-build
 
 build:
   steps:
@@ -37,9 +37,16 @@ build:
         name: pact
         code: |
           ./scripts/pact.sh
+    - script:
+        name: Cache artifacts for release
+        code: |
+          mkdir -p ${WERCKER_OUTPUT_DIR}/dist
+          rm ${WERCKER_OUTPUT_DIR}/dist/*
+          cp -r dist/ ${WERCKER_OUTPUT_DIR}/dist/
 
 # TODO: Get tokens for Pact foundation
 deploy:
+    box: golang
     steps:
         - tcnksm/ghr:
             token: $GITHUB_TOKEN
