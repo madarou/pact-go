@@ -1,5 +1,7 @@
 # The container definition we want to use for developing our app
-box: mefellows/pact-go-docker-build
+box: 
+  id: mefellows/pact-go-docker-build
+  entrypoint: /bin/bash
 
 build:
   steps:
