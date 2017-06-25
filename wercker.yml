@@ -11,8 +11,9 @@ build:
           apt-get install -y software-properties-common unzip zip wget curl
           gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
           curl -sSL https://get.rvm.io | sudo bash -s stable
-          gem install bundler --no-ri --no-rdoc
-          rvm install 2.2.0
+          /bin/bash -l -c "rvm requirements"
+          /bin/bash -l -c "rvm install 2.2.0"
+          /bin/bash -l -c "gem install bundler --no-ri --no-rdoc"
     - golint:
         exclude: "vendor"
     - script:
@@ -29,7 +30,7 @@ build:
     - script:
         name: package
         code: |
-          apt-get update && apt-get install -y ruby-full unzip zip wget
+          . /etc/profile.d/rvm.sh
           make package
     - script:
         name: pact
