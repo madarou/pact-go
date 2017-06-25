@@ -7,8 +7,9 @@ build:
     - script:
         name: install packages
         code: |
-          apt-add-repository ppa:brightbox/ruby-ng
           apt-get update
+          apt-get install -y software-properties-common unzip zip wget
+          apt-add-repository ppa:brightbox/ruby-ng
           apt-get install -y ruby2.2 ruby2.2-dev unzip zip wget
           gem install bundler --no-ri --no-rdoc
     - golint:
