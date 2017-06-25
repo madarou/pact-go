@@ -4,6 +4,10 @@ box: golang
 build:
   steps:
     - setup-go-workspace
+    - script:
+        name: install packages
+        code: |
+          apt-get update && apt-get install -y ruby-full unzip zip wget    
     - golint:
         exclude: "vendor"
     - script:
@@ -17,21 +21,11 @@ build:
     - script:
         name: Publish Coveralls
         code: goveralls -service="wercker.com" -coverprofile=profile.cov -repotoken $COVERALLS_TOKEN
-
-package:
-  box: ruby:2.2
-  steps:
     - script:
         name: package
         code: |
-          apt-get update && apt-get install -y unzip zip wget
+          apt-get update && apt-get install -y ruby-full unzip zip wget
           make package
-
-integration:
-  steps:
-    - setup-go-workspace
-    - golint:
-        exclude: "vendor"
     - script:
         name: pact
         code: |
