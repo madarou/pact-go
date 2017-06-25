@@ -1,19 +1,19 @@
 # The container definition we want to use for developing our app
-box: golang
+box: mefellows/pact-go-docker-build
 
 build:
   steps:
     - setup-go-workspace
-    - script:
-        name: install packages
-        code: |
-          apt-get update
-          apt-get install -y software-properties-common unzip zip wget curl
-          gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
-          curl -sSL https://get.rvm.io | sudo bash -s stable
-          /bin/bash -l -c "rvm requirements"
-          /bin/bash -l -c "rvm install 2.2.0"
-          /bin/bash -l -c "gem install bundler --no-ri --no-rdoc"
+    # - script:
+    #     name: install packages
+    #     code: |
+    #       apt-get update
+    #       apt-get install -y software-properties-common unzip zip wget curl
+    #       gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
+    #       curl -sSL https://get.rvm.io | sudo bash -s stable
+    #       /bin/bash -l -c "rvm requirements"
+    #       /bin/bash -l -c "rvm install 2.2.2"
+    #       /bin/bash -l -c "gem install bundler --no-ri --no-rdoc"
     - golint:
         exclude: "vendor"
     - script:
