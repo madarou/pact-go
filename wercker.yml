@@ -10,8 +10,9 @@ build:
           apt-get update
           apt-get install -y software-properties-common unzip zip wget
           apt-add-repository ppa:brightbox/ruby-ng
-          apt-get install -y ruby2.2 ruby2.2-dev unzip zip wget
+          apt-get install -y rvmv unzip zip wget
           gem install bundler --no-ri --no-rdoc
+          rvm install 2.2.0
     - golint:
         exclude: "vendor"
     - script:
