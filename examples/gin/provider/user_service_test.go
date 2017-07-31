@@ -77,7 +77,7 @@ var billyDoesNotExist = &examples.UserRepository{}
 var billyUnauthorized = &examples.UserRepository{
 	Users: map[string]*examples.User{
 		"billy": &examples.User{
-			Name:     "billy",
+			Name:     "好",
 			Username: "billy",
 			Password: "issilly1",
 		},
