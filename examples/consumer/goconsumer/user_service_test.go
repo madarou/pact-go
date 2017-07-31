@@ -18,7 +18,7 @@ var dir, _ = os.Getwd()
 var pactDir = fmt.Sprintf("%s/../../pacts", dir)
 var logDir = fmt.Sprintf("%s/log", dir)
 var pact dsl.Pact
-var loginRequest = ` { "username":"billy", "password": "issilly" }`
+var loginRequest = ` { "username":"好", "password": "issilly" }`
 var form url.Values
 var rr http.ResponseWriter
 var req *http.Request
@@ -44,7 +44,7 @@ func setup() {
 
 	// Login form values
 	form = url.Values{}
-	form.Add("username", "billy")
+	form.Add("username", "好")
 	form.Add("password", "issilly")
 
 	// Create a request to pass to our handler.
@@ -102,7 +102,7 @@ func TestPactConsumerLoginHandler_UserExists(t *testing.T) {
 			Body: `
 				{
 				  "user": {
-				    "name": "billy"
+				    "name": "好"
 				  }
 				}
 			`,
