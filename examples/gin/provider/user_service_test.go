@@ -65,7 +65,7 @@ var port, _ = utils.GetFreePort()
 var billyExists = &examples.UserRepository{
 	Users: map[string]*examples.User{
 		"billy": &examples.User{
-			Name:     "billy",
+			Name:     "好",
 			Username: "billy",
 			Password: "issilly",
 		},
